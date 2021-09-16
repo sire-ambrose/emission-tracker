@@ -5,10 +5,12 @@ import joblib
 
 st.write("# Annual CO2 Emission")
 
+#print(df)
+
 
 year=st.text_area(label='Year')
-if st.button('Submit'):
-    'You selected: ', year
+
+'You selected: ', year
 
 
 '\n'
@@ -43,17 +45,17 @@ Energy_Source = st.selectbox(
        'Other Gases'])
 
 'You selected: ', Energy_Source
-
-try:
-    test= pd.DataFrame(data=[[int(year), State, Producer_Type, Energy_Source]],
-    columns=['Year','State', 'Producer Type', 'Energy Source'])
-    trans=joblib.load('trans.pkl')
-    x=trans.transform(test)
-    model=joblib.load('model.pkl')
-    value= model.predict(x)
-    'Predicted Value : ',abs(value[0])
-except:
-    pass
+if st.button('Submit'):
+    try:
+        test= pd.DataFrame(data=[[int(year), State, Producer_Type, Energy_Source]],
+        columns=['Year','State', 'Producer Type', 'Energy Source'])
+        trans=joblib.load('trans.pkl')
+        x=trans.transform(test)
+        model=joblib.load('model.pkl')
+        value= model.predict(x)
+        'Predicted Value : ',abs(value[0])
+    except:
+        pass
 
 
 
