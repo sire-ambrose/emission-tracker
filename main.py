@@ -1,15 +1,9 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-from sklearn.preprocessing import OneHotEncoder
-from sklearn.compose import ColumnTransformer
 import joblib
 
-df = pd.read_excel("emission_annual.xls")
-
 st.write("# Annual CO2 Emission")
-
-#print(df)
 
 
 year=st.text_area(label='Year')
